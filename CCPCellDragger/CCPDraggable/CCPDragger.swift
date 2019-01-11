@@ -15,8 +15,6 @@ final class Dragger {
     private let effectType: EffectType
     private var data: [Any]
     
-    private var displayLink: CADisplayLink?
-    private var scrollSpeed: CGFloat = 0
     private var currentIndexPath: IndexPath?
     private var gesture: UILongPressGestureRecognizer?
     private var dataHandler: DataHandler?
@@ -62,14 +60,10 @@ final class Dragger {
     
     private func dragging(to point: CGPoint) {
         dragingViewMove(to: point.y)
-        guard draggableView.contentSize.height > draggableView.bounds.height else { return }
-        setScrollSpeed()
-        displayLink?.isPaused = scrollSpeed == 0
     }
     
     private func didDragged(to point: CGPoint) {
         draggableView.allowsSelection = true
-        displayLink?.isPaused = true
         dataHandler?(data)
         didDraggedAnimation()
     }
@@ -85,7 +79,6 @@ final class Dragger {
     
     private func didDraggedAnimationCompletion() {
         draggingView.layer.shadowOpacity = 0
-        NotificationCenter.default.post(name: .dragged, object: nil)
         UIView.animate(withDuration: 0.1, animations: {
             self.draggableView.reloadData()
             self.draggableView.layer.add(CATransition(), forKey: "reload")
@@ -96,18 +89,6 @@ final class Dragger {
     
     private func setDidDraggedDraggingViewFrame() {
         draggingView.frame = draggableView.rectForRow(at: currentIndexPath!)
-    }
-    
-    private func setScrollSpeed() {
-        scrollSpeed = 0
-        let halfCellHeight = draggingView.bounds.height / 2
-        let cellCenterY = draggingView.center.y - draggingView.bounds.minY
-        if cellCenterY < halfCellHeight {
-            scrollSpeed = 5 * ( cellCenterY / halfCellHeight - 1.1)
-        }
-        else if cellCenterY > draggableView.bounds.height - halfCellHeight  {
-            scrollSpeed = 5 * ((cellCenterY - draggableView.bounds.height) / halfCellHeight + 1.1)
-        }
     }
     
     private func createDraggingImage(in cell: UITableViewCell) -> UIImage? {
@@ -141,10 +122,10 @@ final class Dragger {
     }
     
     private func effect(isBeigin: Bool) {
-        if effectType == .hover {
+        switch effectType {
+        case .hover:
             hoverEffect(isBeigin)
-        }
-        else {
+        case .translucency:
             translucencyEffect(isBeigin)
         }
     }
@@ -181,8 +162,5 @@ final class Dragger {
     private func removeData(at indexPath: IndexPath) {
         data.insert(data.remove(at: indexPath.row), at: currentIndexPath!.row)
     }
-    
-    deinit {
-        displayLink?.invalidate()
-    }
+
 }

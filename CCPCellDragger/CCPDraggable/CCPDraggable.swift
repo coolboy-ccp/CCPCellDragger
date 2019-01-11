@@ -58,9 +58,5 @@ extension UITableView: CCPDraggable {
     }
 }
 
-extension Notification.Name {
-    static let dragged = Notification.Name("CCPDragger_Dragged")
-}
-
 
 
