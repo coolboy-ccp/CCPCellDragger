@@ -12,6 +12,8 @@
 		0015F17F21E82B82008A5444 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0015F17D21E82B82008A5444 /* Main.storyboard */; };
 		0015F18121E82B84008A5444 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0015F18021E82B84008A5444 /* Assets.xcassets */; };
 		0015F18421E82B84008A5444 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0015F18221E82B84008A5444 /* LaunchScreen.storyboard */; };
+		0015F18E21E82BA1008A5444 /* CCPDragger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015F18C21E82BA1008A5444 /* CCPDragger.swift */; };
+		0015F18F21E82BA1008A5444 /* CCPDraggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015F18D21E82BA1008A5444 /* CCPDraggable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		0015F18021E82B84008A5444 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0015F18321E82B84008A5444 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0015F18521E82B84008A5444 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0015F18C21E82BA1008A5444 /* CCPDragger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPDragger.swift; sourceTree = "<group>"; };
+		0015F18D21E82BA1008A5444 /* CCPDraggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPDraggable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,11 +61,21 @@
 				0015F17921E82B82008A5444 /* AppDelegate.swift */,
 				0015F17B21E82B82008A5444 /* ViewController.swift */,
 				0015F17D21E82B82008A5444 /* Main.storyboard */,
+				0015F18B21E82BA1008A5444 /* CCPDraggable */,
 				0015F18021E82B84008A5444 /* Assets.xcassets */,
 				0015F18221E82B84008A5444 /* LaunchScreen.storyboard */,
 				0015F18521E82B84008A5444 /* Info.plist */,
 			);
 			path = CCPCellDragger;
+			sourceTree = "<group>";
+		};
+		0015F18B21E82BA1008A5444 /* CCPDraggable */ = {
+			isa = PBXGroup;
+			children = (
+				0015F18C21E82BA1008A5444 /* CCPDragger.swift */,
+				0015F18D21E82BA1008A5444 /* CCPDraggable.swift */,
+			);
+			path = CCPDraggable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,6 +149,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0015F18F21E82BA1008A5444 /* CCPDraggable.swift in Sources */,
+				0015F18E21E82BA1008A5444 /* CCPDragger.swift in Sources */,
 				0015F17C21E82B82008A5444 /* ViewController.swift in Sources */,
 				0015F17A21E82B82008A5444 /* AppDelegate.swift in Sources */,
 			);
